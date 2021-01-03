@@ -1,0 +1,149 @@
+* {
+  font-family: 'Montserrat', sans-serif;
+}
+
+html, body, header, section, footer {
+  width: 100%;
+}
+
+body {
+  margin: 0;
+}
+
+/* =====header===== */
+header {
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+#logo {
+  width: 300px;
+}
+
+#logo_text {
+  /* font-weight: 500; */
+  font-weight: bold;
+}
+
+#github_repository {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+
+/* =====section===== */
+#content>* {
+  /*section안의 요소는 가로로 정렬*/
+  float: left;
+}
+
+#content {
+  padding-left: calc(50% - 665px);
+}
+
+.two_tabs {
+  width: 960px;
+  border: 1px solid grey;
+  padding: 0px 10px 10px 10px;
+  border-radius: 10px;
+}
+
+.tab_header {
+  width: 100%;
+  margin-bottom: 0;
+}
+
+.tab_header>a {
+  font-size: 30px;
+  padding: 10px 10px 0px 10px;
+  /* border: 1px solid red; */
+}
+
+.tab {
+  width: 100%;
+  border: 1px solid grey;
+  display: none;
+}
+
+#source_header, #binary_header {
+  background-color: grey;
+  color: black;
+  text-decoration: none;
+  radius:
+}
+
+/*---임시코드---*/
+#source_header {
+  background-color: white;
+  border-bottom: solid white 2px;
+}
+
+.tab:target {
+  display: block;
+}
+
+.send_form {
+  width: 100%;
+}
+
+#input_code, #option_text {
+  width: calc(100% - 30px);
+}
+
+#input_code {
+  height: 300px;
+}
+
+.input, .option {
+  /*send_form안의 요소는 가로로 정렬*/
+  float: left;
+  width: 50%;
+}
+
+.option_panel>h4 {
+  border: 1px solid blue;
+}
+
+.reset_btn {
+  margin-top: 40px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  float: right;
+}
+
+#submit_btn {
+  width: 100px;
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+.result {
+  width: 240px;
+  border: 1px solid grey;
+}
+
+/* =================크기 작을 때==================== */
+@media (max-width: 1400px) {
+  .tabs {
+    position: absolute;
+    left: 30px;
+    right: 30px;
+    width: calc(100% - 60px);
+  }
+
+  #github_repository {
+    background-color: black;
+  }
+}
+
+/* 임시 코드=============== */
+input[type=button] {
+  width: 70px;
+  height: 21px;
+  top: 0;
+  font-weight: bold;
+  background: #333;
+  border: 1px solid #333;
+  color: #fff;
+}
