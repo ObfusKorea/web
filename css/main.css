@@ -137,6 +137,8 @@ input[type=button] {
 
 .reset_btn>img {
   width: 25px;
+  position: relative;
+  top : 3px;
 }
 
 .submit_btn>img {
