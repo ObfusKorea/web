@@ -22,9 +22,9 @@
   <!-- 1. 헤더 -->
   <header>
     <img src="img/obfus_logo.png" id="logo" alt="obfus_logo">
-    <span id="logo_text">A Tool for Obfuscate C and Binary Programs</span>
+    <span id="logo_text">An Obfuscation Tool for C and Binary Programs</span>
     <button type="button" id="github_repository" onclick="window.open('https://github.com/ObfusKorea/Obfuscator')">GitHub</button>
-    <p>An obfuscation tool for C and Binary Program. Just paste (or upload) your code below, and you can get a obfuscated version of your work. Feeling Confused? Look <a href="help.html">How to Use it</a>!</p>
+    <p>OBFUS is an obfuscation tool for software copyright and vulnerability protection. It provides obfuscation for C code and binary programs, so choose what to obfuscate and paste (or upload) your code below. And you can get a obfuscated version of your work. Is there any difficulty using the web page? Look <a href="help.html">how to Use it</a>!</p>
   </header>
 
   <!-- 2. 본문 -->
@@ -32,23 +32,23 @@
     <div class="two_tabs">
       <!-- 2-1 탭 헤더-->
       <h2 class="tab_header">
-        <a href="#source" id="source_header">Source</a>
-        <a href="#binary" id="binary_header">Binary</a>
+        <a href="#source" id="source_header" class="current" onclick="changeTab(this.id);">Source</a>
+        <a href="#binary" id="binary_header" class="not_current" onclick="changeTab(this.id);">Binary</a>
       </h2>
 
       <!-- 2-2 소스 코드 난독화 탭 -->
       <div id="source" class="tab">
-        <form id="source_send_form" class="send_form" action="form_action.php" method="post" enctype="multipart/form-data">
-          <input type="hidden" name="program" value="source">
+        <form id="source_send_form" class="send_form" action="obfus.php" method="post" enctype="multipart/form-data">
+          <input type="hidden" name="type" value="source">
 
           <!-- 2-2-1 input code -->
           <div class="input">
             <h3>Code</h3>
             <p>Paste Your Code Here : </p>
-            <textarea id="input_code"></textarea>
+            <textarea class="input_code" name="input_code"></textarea>
             <p class="center_or">or</p>
-            <label for="input_file" class="file_btn">Upload File</label>
-            <input type="file" name="input_file" id="input_file" style="display:none">
+            <label for="upload_source" class="file_btn">Upload File</label>
+            <input type="file" id="upload_source" name="input_file" style="display:none" onchange="fileUploaded(this.id);">
           </div>
 
           <!-- 2-2-2 input option -->
@@ -57,32 +57,36 @@
 
             <!-- 선택된 옵션들이 들어갈 input -->
             <p>Selected Options : </p>
-            <input type="text" id="option_text" name="option_text" readonly></br></br>
+            <input type="text" class="option_text" name="option_text" readonly></br></br>
 
             <!-- 옵션들, 접이식 패널로 구성되어 있음 -->
             <h4>Opaque Predicate ▼</h4>
             <div class="option_panel" style="display: none">
-              <input type="button" id="invariant" value="Invariant" onclick="addOption(this.id)"><span class="description"> 한 방향으로 실행되는 조건문을 만들고, 실행되지 않는 부분에 쓰레기 코드를 삽입하는 난독화 옵션</span></br>
+              <input type="button" value="Invariant" onclick="addOption(this.value)"><span class="description"> An obfuscation option that creates a conditional statement that runs in one direction and inserts a garbage code in the part
+                that is not executed. This option offers invariant opaque predicates.</span></br>
 
-              <input type="button" id="contextual" value="Contextual" onclick="addOption(this.id)"><span class="description"> 한 방향으로 실행되는 조건문을 만들고, 실행되지 않는 부분에 쓰레기 코드를 삽입하는 난독화 옵션</span></br>
+              <input type="button" value="Contextual" onclick="addOption(this.value)"><span class="description"> An obfuscation option that creates a conditional statement that runs in one direction and inserts a garbage code in the part
+                that is not executed. This option offers contextual opaque predicates.</span></br>
 
-              <input type="button" id="dynamic" value="Dynamic" onclick="addOption(this.id)"><span class="description"> 한 방향으로 실행되는 조건문을 만들고, 실행되지 않는 부분에 쓰레기 코드를 삽입하는 난독화 옵션</span>
+              <input type="button" value="Dynamic" onclick="addOption(this.value)"><span class="description"> An obfuscation option that creates a conditional statement that runs in one direction and inserts a garbage code in the part
+                that is not executed. This option offers dynamic opaque predicates.</span>
             </div>
 
-            <h4>Uglyfier ▼</h4>
+            <h4>Modify Code Shape ▼</h4>
 
             <div class="option_panel" style="display: none">
-              <input type="button" id="var" value="Rename Identifier" onclick="addOption(this.id)"><span class="description"> 변수의 이름을 알아보기 어렵게 변환하는 난독화 옵션</span></br>
+              <input type="button" value="Rename Identifier" onclick="addOption(this.value)"><span class="description"> An obfuscation option that translate names of variables to be hard to recognize.</span></br>
 
-              <input type="button" id="ugly" value="Code Uglyfier" onclick="addOption(this.id)"><span class="description"> 띄어쓰기 및 엔터, 주석을 지워 소스코드를 한 눈에 들어오지 못하게 하는 난독화 옵션(가장 마지막에 선택하길 권장)</span>
+              <input type="button" value="Code Uglyfier" onclick="addOption(this.value)"><span class="description"> An obfuscation option that makes it difficult to read the code at a glance by removing spacing, line breaks, and annotations.
+                (This option is recommended to be the last to be selected)</span>
             </div>
 
             <h4>Etc ▼</h4>
 
             <div class="option_panel" style="display: none">
-              <input type="button" id="mba" value="MBA" onclick="addOption(this.id)"><span class="description"> Mixed Boolean Arithmeic의 약자로, Boolean을 섞어 연산하는 난독화 옵션</span></br>
+              <input type="button" value="MBA" onclick="addOption(this.value)"><span class="description"> Mixed Boolean Arithmeic, An obfuscation option that is calculated by mixing Boolean.</span></br>
 
-              <input type="button" id="asm" value="Inline Assembly" onclick="addOption(this.id)"><span class="description"> C 코드에 Inline Assembly를 삽입하는 난독화 옵션</span>
+              <input type="button" value="Inline Assembly" onclick="addOption(this.value)"><span class="description"> An obfuscation option to insert Inline Assembly into code.</span>
             </div>
           </div>
 
@@ -94,42 +98,40 @@
 
       <!-- 2-3 바이너리 난독화 탭 -->
       <div id="binary" class="tab">
-        <form id="binary_send_form" class="send_form" action="form_action.php" method="post" enctype="multipart/form-data">
-          <input type="hidden" name="program" value="binary">
+        <form id="binary_send_form" class="send_form" action="obfus.php" method="post" enctype="multipart/form-data">
+          <input type="hidden" name="type" value="binary">
 
+          <!-- 2-3-1 input code -->
           <div class="input">
             <h3>Code</h3>
-            <p>Paste Your Code Here : </p>
-            <label for="input_file" class="file_btn">Upload File</label>
-            <input type="file" name="input_file" id="input_file" style="display:none">
+            <p>Select Your Code : </p>
+            <input type="text" readonly class="file_name"></br></br>
+            <label for="upload_binary" class="file_btn">Upload File</label>
+            <input type="file" id="upload_binary" name="input_file" style="display:none" onchange="fileUploaded(this.id)">
           </div>
 
+          <!-- 2-3-2 input option -->
           <div class="option">
             <h3>Option</h3>
 
             <!-- 선택된 옵션들이 들어갈 input -->
-            <input type="text" id="option_text" name="option_text" readonly></br></br>
+            <p>Selected Options : </p>
+            <input type="text" class="option_text" name="option_text" readonly></br></br>
 
             <!-- 옵션들, 접이식 패널로 구성되어 있음 -->
             <h4>Etc ▼</h4>
-
             <div class="option_panel" style="display: none">
-              <input type="button" id="mba" value="MBA" onclick="addOption(this.id)"><span class="description"> Mixed Boolean Arithmeic의 약자로, Boolean을 섞어 연산하는 난독화 옵션</span></br>
-
-              <input type="button" id="asm" value="Inline Assembly" onclick="addOption(this.id)"><span class="description"> C 코드에 Inline Assembly를 삽입하는 난독화 옵션</span>
+              <input type="button" value="MBA" onclick="addOption(this.value)"><span class="description"> Mixed Boolean Arithmeic, An obfuscation option that is calculated by mixing Boolean.</span>
             </div>
 
-            <button class="submit_btn" type="button" onclick="obfuscate()"><span>Obfuscate ☑</span></button>
-            <button type="reset" class="reset_btn" style="vertical-align:middle">Clear</button>
+            <!-- 2-3-3 버튼 -->
+            <button type="submit" class="submit_btn" onclick="obfuscate()">Obfuscate <img src="img/check.png" alt="proceed"></button>
+            <button type="reset" class="reset_btn">Clear <img src="img/refresh.png" alt="refresh"></button>
           </div>
         </form>
-        <!-- <p class="tabnav"><a href="#source">next &#10151;</a></p> -->
       </div>
     </div>
   </section>
-
-  <!-- 3 footer -->
-  <!-- <footer>Chungnam National University 개발자명 표시 라이센스 기타등등</footer> -->
 </body>
 
 </html>

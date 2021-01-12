@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Obfus</title>
+
+  <!-- 폰트 -->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- css -->
+  <link rel="stylesheet" type="text/css" href="css/obfus_done.css">
+
+  <!-- js -->
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+  <script src="js/obfus.js"></script>
+</head>
+
+<body>
+  <header>
+    <img src="img/obfus_logo.png" id="logo" alt="obfus_logo">
+    <span id="logo_text">An Obfuscation Tool for C and Binary Programs</span>
+    <button type="button" id="github_repository" onclick="window.open('https://github.com/ObfusKorea/Obfuscator')">GitHub</button>
+    <p>OBFUS is an obfuscation tool for software copyright and vulnerability protection. It provides obfuscation for C code and binary programs, so choose what to obfuscate and paste (or upload) your code below. And you can get a obfuscated version of your work. Is there any difficulty using the web page? Look <a href="help.html">how to Use it</a>!</p>
+  </header>
+
+  <section id="content">
+    <div class="two_tabs">
+
+      <!-- 탭 헤더 -->
+      <h2 class="tab_header"><a href="#source" id="source_header" style="background-color: white; border-bottom: solid white 2px;">Source</a><a href="#binary" id="binary_header">Binary</a></h2>
+
+      <div id="source" class="tab"></div>
+
+      <p>Your Code : </p>
+      <textarea id="input_code" >qwer
+
+        qwerqwer
+
+      qwer</textarea>
+
+      <p>Selected Options : </p>
+      <input type="text" id="option_text" name="option_text" value="-MBA" readonly></br></br>
+    </div>
+    </div>
+
+    <img src="img/arrow.png" class="arrow">
+
+    <!-- 결과 출력 창 -->
+    <div class="result" id="result_div">
+      <h3>Obfuscation Successful!</h3>
+      <div class="output">
+        <p>Obfuscated Code : </p>
+        <textarea id="output_code"></textarea>
+      </div>
+      <button type="button" name="button" class="file_btn">Download</button>
+
+      <p class="center_or">or</p>
+      <button type="button" name="button" onclick="location.reload();" class="file_btn">Retry</button>
+
+    </div>
+  </section>
+</body>
+
+</html>

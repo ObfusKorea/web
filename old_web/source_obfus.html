@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="utf-8">
+  <title>ObfusKorea</title>
+  <link rel="stylesheet" type="text/css" href="obfus.css">
+  <link rel="stylesheet" type="text/css" href="main.css">
+  <script src="obfus.js"></script>
+</head>
+
+<body>
+  <h1>OBFUS 코드 난독화 프로그램</h1>
+
+  <h3>Source code 난독화</h3>
+
+  <form class="" action="form_action.php" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="program" value="source">
+
+    <p> input</p>
+    <input type="file" name="inputFile" id="inputFile">
+
+    <p> option</p>
+    <input type="button" id="mba" value="MBA" onclick="addOption(this.id)"><span class="description"> Mixed Boolean Arithmeic의 약자로, Boolean을 섞어 연산하는 난독화 옵션</span></br>
+
+    <input type="button" id="invariant" value="Invariant Opaque Predicates" onclick="addOption(this.id)">
+
+    <input type="button" id="contextual" value="Contextual Opaque Predicates" onclick="addOption(this.id)">
+
+    <input type="button" id="dynamic" value="Dynamic Opaque Predicates" onclick="addOption(this.id)"><span class="description"> 한 방향으로 실행되는 조건문을 만
+들고, 실행되지 않는 부분에 쓰레기 코드를 삽입하는 난독화 옵션</span></br>
+
+    <input type="button" id="asm" value="Inline Assembly" onclick="addOption(this.id)"><span class="description"> C 코드에 Inline Assembly를 삽입하는 난독화 옵>션</span></br>
+
+
+    <!--<input type="button" id="ctype" value="Type Change" onclick="addOption(this.id)"><span class="description"> 변수의 자료형을 변환하여 가독성을 떨어트리는
+ 난독화 옵션</span></br>
+    -->
+    <input type="button" id="var" value="Rename Identifier" onclick="addOption(this.id)"><span class="description"> 변수의 이름을 알아보기 어렵게 변환하는 난독>화 옵션</span></br>
+
+    <input type="button" id="ugly" value="Code Uglyfier" onclick="addOption(this.id)"><span class="description"> 띄어쓰기 및 엔터, 주석을 지워 소스코드를 한 눈>에 들어오지 못하게 하는 난독화 옵션(가장 마지막에 선택하길 권장)</span></br>
+
+    <input type="text" id="optionText" name="optionText" readonly></br></br>
+
+    <div class="buttonDiv">
+      <button type="button" class="mainBtn" style="vertical-align:middle" onClick="location.href='main.html'"><span>처음으로 </span></button>
+      <button type="reset" class="resetBtn" style="vertical-align:middle"><span>초기화 </span></button>
+      <button type="submit" class="proceed" style="vertical-align:middle"><span>난독화 </span></button>
+    </div>
+
+  </form>
+
+</body>
+
+</html>

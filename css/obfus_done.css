@@ -8,15 +8,21 @@ html, body, header, section, footer {
 
 body {
   margin: 0;
-  padding: 10px 10px 10px 10px;
 }
 
 /* =====header===== */
+header {
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
 #logo {
   width: 300px;
 }
 
 #logo_text {
+  /* font-weight: 500; */
   font-weight: bold;
 }
 
@@ -27,19 +33,25 @@ body {
 }
 
 /* =====section===== */
-#content {
-  padding-left: calc(50% - 600px);
-}
-
 #content>* {
+  /*section안의 요소는 가로로 정렬*/
   float: left;
 }
 
-.two_tabs {
-  width: 1200px;
-  padding: 0px 10px 10px 10px;
+#content {
+  padding-left: calc(50% - 665px);
+}
+
+.two_tabs, .result {
   border: 1px solid grey;
+  padding: 0px 10px 10px 10px;
   border-radius: 10px;
+}
+
+.two_tabs, .result {
+  width: 600px;
+  height: 600px;
+  font-size: 20px;
 }
 
 .tab_header {
@@ -47,7 +59,7 @@ body {
   margin-bottom: 0;
 }
 
-.not_current {
+.tab_header>a {
   font-size: 30px;
   padding: 10px 10px 0px 10px;
   color: black;
@@ -56,50 +68,35 @@ body {
   background-color: grey;
 }
 
-.current {
-  font-size: 30px;
-  padding: 10px 10px 0px 10px;
-  color: black;
-  text-decoration: none;
-  border-radius: 10px 10px 0px 0px;
-  border-bottom: solid white 2px;
-  background-color: white;
-}
-
 .tab {
   width: 100%;
   border: 1px solid grey;
   display: none;
 }
 
-.tab:target {
-  display: block;
-}
-
 .send_form {
   width: 100%;
 }
 
-.input, .option {
-  /*send_form안의 요소는 가로로 정렬*/
-  float: left;
-  width: 50%;
+#input_code, #option_text, #output_code, .input_code {
+  width: calc(100% - 10px);
 }
 
-.input_code, .option_text, .file_name {
-  width: calc(100% - 30px);
-}
-
-.file_name {
-  border: none;
-}
-
-.input_code {
+#input_code, #output_code, #output_code {
   height: 300px;
 }
 
 .center_or {
   margin-left: calc(50% - 10px);
+}
+
+.input, .option {
+  /*send_form안의 요소는 가로로 정렬*/
+  float: left;
+}
+
+.input {
+  width: 40%;
 }
 
 .option>h4 {
@@ -108,44 +105,17 @@ body {
   margin-bottom: 10px;
 }
 
-input[type=button] {
-  height: 21px;
-  top: 0;
-  font-weight: bold;
-  background: #333;
-  border: 1px solid #333;
-  color: #fff;
-}
-
-.reset_btn, .submit_btn {
-  margin-top: 100px;
+.reset_btn {
+  margin-top: 40px;
+  margin-right: 10px;
+  margin-bottom: 10px;
   float: right;
-  background-color: green;
+  background-color: grey;
   color: white;
-  font-size: 25px;
   padding: 3px 10px 3px 10px;
-  margin-left: 15px;
   border-radius: 10px;
 }
 
-.reset_btn>img {
-  width: 25px;
-  position: relative;
-  top: 3px;
-}
-
-.submit_btn>img {
-  width: 20px;
-}
-
-/* #submit_btn {
-  font-weight: bold;
-  filter: grayscale(50%) opacity(0.6);
-}
-
-#submit_btn:hover {
-  filter: none;
-} */
 .file_btn {
   background-color: #0078FF;
   border: 1px solid #0078FF;
@@ -157,17 +127,14 @@ input[type=button] {
   width: 140px;
 }
 
-/* =====help=====*/
-#help_content {
-  padding-left: 10px;
-}
-
-.back_btn {
-  margin-top: 50px;
-  float: right;
-  font-size: 18px;
-  width: 190px;
-  margin-right: calc(50% - 95px);
+.arrow {
+  width: 80px;
+  height: 80px;
+  margin-left: 15px;
+  margin-right: 15px;
+  border: 0;
+  outline: 0;
+  margin-top: 260px;
 }
 
 /* =================크기 작을 때==================== */
